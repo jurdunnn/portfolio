@@ -18,8 +18,8 @@
 
     <body class="antialiased scroll-smooth">
         <header>
-            <div>Animated Sections</div>
-            <div>Made By Brian</div>
+            <div>Jordan Downs</div>
+            <div>Full Stack Developer</div>
         </header>
         <section class="first">
             <div class="outer">
