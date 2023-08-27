@@ -1,4 +1,5 @@
 import './bootstrap';
+import 'spltjs';
 
 const sections = document.querySelectorAll("section");
 const images = document.querySelectorAll(".bg");
@@ -29,15 +30,6 @@ const tlDefaults = {
     duration: 1.25
 };
 
-const splitHeadings = headings.map((heading) => {
-    return new SplitText(heading, {
-        type: "chars, words, lines",
-        linesClass: "clip-text"
-    });
-});
-
-console.log(splitHeadings);
-
 gsap.set(outerWrappers, {yPercent: 100});
 gsap.set(innerWrappers, {yPercent: -100});
 
@@ -50,14 +42,12 @@ function gotoSection(index, direction) {
     }
 
     animating = true;
-
     let fromTop = direction === -1,
         dFactor = fromTop ? -1 : 1,
         tl = gsap.timeline({
             defaults: {duration: 1.25, ease: "power1.inOut"},
             onComplete: () => (animating = false)
         });
-
     if (currentIndex >= 0) {
         // The first time this function runs, current is -1
         gsap.set(sections[currentIndex], {zIndex: 0});
@@ -66,7 +56,6 @@ function gotoSection(index, direction) {
             {autoAlpha: 0}
         );
     }
-
     gsap.set(sections[index], {autoAlpha: 1, zIndex: 1});
     tl.fromTo(
         [outerWrappers[index], innerWrappers[index]],
@@ -76,7 +65,7 @@ function gotoSection(index, direction) {
     )
         .fromTo(images[index], {yPercent: 15 * dFactor}, {yPercent: 0}, 0)
         .fromTo(
-            splitHeadings[index].chars,
+            headings[index].chars,
             {autoAlpha: 0, yPercent: 150 * dFactor},
             {
                 autoAlpha: 1,
