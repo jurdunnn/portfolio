@@ -1,5 +1,4 @@
 import './bootstrap';
-import 'spltjs';
 
 const sections = document.querySelectorAll("section");
 const images = document.querySelectorAll(".bg");
