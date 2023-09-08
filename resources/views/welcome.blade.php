@@ -21,6 +21,7 @@
             <div>Jordan Downs</div>
             <div>Full Stack Developer</div>
         </header>
+
         <section class="first">
             <div class="outer">
                 <div class="inner">
