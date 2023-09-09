@@ -23,14 +23,12 @@
             <p>Full Stack Developer</p>
         </header>
 
-        <x-section bgColor="primary" textColor="secondary" heading="Conte's Domestic Electrical Services" />
-
-        <x-section bgColor="secondary" textColor="primary" heading="Steam Game Checker" />
-
-        <x-section bgColor="primary" textColor="secondary" heading="Project Drawer" />
-
-        <x-section bgColor="secondary" textColor="primary" heading="Cookery" />
-
-        <x-section bgColor="primary" textColor="secondary" heading="Linux Games" />
+        @foreach ($projects as $project)
+            <x-section
+                bgColor="{{ $loop->odd ? 'primary' : 'secondary' }}"
+                textColor="{{ $loop->odd ? 'secondary' : 'primary' }}"
+                heading="{{ $project['heading'] }}"
+            />
+        @endforeach
     </body>
 </html>
