@@ -5,6 +5,11 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    safelist: [
+        {
+            pattern: /bg-(primary|secondary)/
+        }
+    ],
     theme: {
         extend: {},
         colors: {
