@@ -19,8 +19,8 @@
 
     <body class="antialiased scroll-smooth">
         <header>
-            <p>Jordan Downs</p>
-            <p>Full Stack Developer</p>
+            <a href="https://github.com/jurdunnn" target="_blank">Jordan Downs</a>
+            <a href="https://www.linkedin.com/in/jordan-downs-5a546a104/" target="_blank">Junior PHP Developer</a>
         </header>
 
         @foreach ($projects as $project)
