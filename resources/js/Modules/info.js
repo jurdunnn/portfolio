@@ -25,11 +25,11 @@ console.log(targets[0]);
 gsap.set(targets[0], {xPercent: 0});
 
 function slideOneNext() {
-    gsap.fromTo(targets[count], {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 1.2, xPercent: -100, zIndex: -10});
+    gsap.fromTo(targets[count], {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
 
     count = count < targets.length - 1 ? ++count : 0;
 
-    gsap.fromTo(targets[count], {xPercent: 100, zIndex: 10}, {duration: 1.2, xPercent: 0, zIndex: 0});
+    gsap.fromTo(targets[count], {xPercent: 100, zIndex: 10}, {duration: 0.8, xPercent: 0, zIndex: 0});
 }
 
 function slideOnePrev() {
@@ -37,5 +37,5 @@ function slideOnePrev() {
 
     count = count < targets.length ? --count : 0;
 
-    gsap.fromTo(targets[count], {xPercent: -100, zIndex: 0}, {delay: 0, duration: 1.2, xPercent: 0, zIndex: -10});
+    gsap.fromTo(targets[count], {xPercent: -100, zIndex: 0}, {delay: 0, duration: 0.8, xPercent: 0, zIndex: -10});
 }
