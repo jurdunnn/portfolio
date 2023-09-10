@@ -41,6 +41,7 @@ function gotoSection(index, direction) {
 
     let fromTop = direction === -1,
         dFactor = fromTop ? -1 : 1,
+        hasPrimaryText = headings[index].className.includes('text-primary'),
         tl = gsap.timeline({
             defaults: {duration: .85, ease: "power1.inOut"},
             onComplete: () => (animating = false)
@@ -80,8 +81,7 @@ function gotoSection(index, direction) {
             0.2
         );
 
-    // Set heading Colour based on text headings text color
-    headings[index].className.includes('text-primary') ?
+    hasPrimaryText ?
         tl.to(header, {color: '#4f6d7a'}, 0.1)
         : tl.to(header, {color: '#c0d6df'}, 0.1);
 
