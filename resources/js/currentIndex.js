@@ -1,13 +1,26 @@
-export var currentIndex = (function () {
+const currentIndex = {
+    value: -1,
+    listeners: [],
 
-    var index = -1;
+    getCurrentIndex() {
+        return this.value;
+    },
 
-    return {
-        getCurrentIndex: function () {
-            return index;
-        },
-        setCurrentIndex: function (newIndex) {
-            index = newIndex;
-        }
-    };
-})();
+    setCurrentIndex(index) {
+        this.value = index;
+
+        this.notifyListeners();
+    },
+
+    addEventListener(listener) {
+        this.listeners.push(listener);
+    },
+
+    notifyListeners() {
+        this.listeners.forEach(listener => {
+            listener(this.value);
+        });
+    }
+};
+
+export {currentIndex}
