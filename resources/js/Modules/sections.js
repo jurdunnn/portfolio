@@ -1,3 +1,5 @@
+import {currentIndex} from '../currentIndex';
+
 const sections = document.querySelectorAll("section");
 const backgrounds = document.querySelectorAll(".bg");
 const headings = gsap.utils.toArray(".section-heading");
@@ -6,8 +8,7 @@ const outerWrappers = gsap.utils.toArray(".outer");
 const innerWrappers = gsap.utils.toArray(".inner");
 const clamp = gsap.utils.clamp(0, sections.length - 1);
 
-let animating = false,
-    currentIndex = -1;
+let animating = false;
 
 const touch = {
     startX: 0,
@@ -23,10 +24,9 @@ gsap.set(outerWrappers, {yPercent: 100});
 gsap.set(innerWrappers, {yPercent: -100});
 
 function gotoSection(index, direction) {
-    index = clamp(index); // make sure it's valid
+    index = clamp(index);
 
-    // we're at the end, so exit
-    if (currentIndex === index) {
+    if (currentIndex.getCurrentIndex() === index) {
         return;
     }
 
@@ -40,11 +40,11 @@ function gotoSection(index, direction) {
             onComplete: () => (animating = false)
         });
 
-    if (currentIndex >= 0) {
-        gsap.set(sections[currentIndex], {zIndex: 0});
+    if (currentIndex.getCurrentIndex() >= 0) {
+        gsap.set(sections[currentIndex.getCurrentIndex()], {zIndex: 0});
 
-        tl.to(backgrounds[currentIndex], {yPercent: -15 * dFactor}).set(
-            sections[currentIndex],
+        tl.to(backgrounds[currentIndex.getCurrentIndex()], {yPercent: -15 * dFactor}).set(
+            sections[currentIndex.getCurrentIndex()],
             {autoAlpha: 0}
         );
     }
@@ -78,15 +78,15 @@ function gotoSection(index, direction) {
         tl.to(header, {color: '#4f6d7a'}, 0.1)
         : tl.to(header, {color: '#c0d6df'}, 0.1);
 
-    currentIndex = index;
+    currentIndex.setCurrentIndex(index);
 }
 
 export function wheel(e) {
     if (animating) return;
 
     e.wheelDeltaY < 0
-        ? gotoSection(currentIndex + 1, 1)
-        : gotoSection(currentIndex - 1, -1);
+        ? gotoSection(currentIndex.getCurrentIndex() + 1, 1)
+        : gotoSection(currentIndex.getCurrentIndex() - 1, -1);
 }
 
 export function touchStart(e) {
@@ -110,9 +110,9 @@ export function touchEnd(e) {
 
     touch.dy = t.pageY - touch.startY;
 
-    if (touch.dy > 10) gotoSection(currentIndex - 1, -1);
+    if (touch.dy > 10) gotoSection(currentIndex.getCurrentIndex() - 1, -1);
 
-    if (touch.dy < -10) gotoSection(currentIndex + 1, 1);
+    if (touch.dy < -10) gotoSection(currentIndex.getCurrentIndex() + 1, 1);
 }
 
 gotoSection(0, 1);
