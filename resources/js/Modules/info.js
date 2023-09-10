@@ -4,24 +4,33 @@ let index = currentIndex.getCurrentIndex();
 
 const sections = document.querySelectorAll('section');
 let section = sections[index];
-
 let count = 0;
+let targets = section.querySelectorAll(".slide");
 
-const targets = section.querySelectorAll(".slide");
+section.querySelector('.nextButton').addEventListener("click", slideOneNext);
+section.querySelector('.prevButton').addEventListener("click", slideOnePrev);
 
 function handleCurrentIndexChange(updatedIndex) {
+    count = 0;
+
     index = updatedIndex;
-    console.log('Current index changed:', updatedIndex);
+
+    section = sections[index];
+
+    targets = section.querySelectorAll(".slide");
+
+    gsap.set(targets, {xPercent: 100});
+
+    gsap.set(targets[0], {xPercent: 0});
+
+    section.querySelector('.nextButton').addEventListener("click", slideOneNext);
+    section.querySelector('.prevButton').addEventListener("click", slideOnePrev);
 }
 
 currentIndex.addEventListener(handleCurrentIndexChange);
 
-nextButton.addEventListener("click", slideOneNext);
-prevButton.addEventListener("click", slideOnePrev);
-
 gsap.set(targets, {xPercent: 100});
 
-console.log(targets[0]);
 gsap.set(targets[0], {xPercent: 0});
 
 function slideOneNext() {
