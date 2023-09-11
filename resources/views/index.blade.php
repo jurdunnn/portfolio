@@ -28,6 +28,7 @@
                 bgColor="{{ $loop->odd ? 'primary' : 'secondary' }}"
                 textColor="{{ $loop->odd ? 'secondary' : 'primary' }}"
                 heading="{{ $project['heading'] }}"
+                :slides="$project['slides']"
             />
         @endforeach
     </body>

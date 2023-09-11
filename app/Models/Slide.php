@@ -10,7 +10,18 @@ class Slide extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['position', 'inner_html', 'outer_classes', 'project_id'];
+    protected $fillable = [
+        'position',
+        'inner_html',
+        'outer_classes',
+        'project_id'
+    ];
+
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
 
     public function project(): BelongsTo
     {

@@ -23,8 +23,14 @@ class Project extends Model
         'completion_date' => 'date',
     ];
 
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function slides(): HasMany
     {
-        return $this->hasMany(Slide::class);
+        return $this->hasMany(Slide::class)->orderBy('position');
     }
 }
