@@ -42,6 +42,8 @@ function slideOneNext() {
 }
 
 function slideOnePrev() {
+    if (count === 0) return;
+
     gsap.fromTo(targets[count], {xPercent: 0, zIndex: 10}, {xPercent: 100, zIndex: 0});
 
     count = count < targets.length ? --count : 0;
