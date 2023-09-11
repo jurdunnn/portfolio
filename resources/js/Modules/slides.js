@@ -7,9 +7,6 @@ let section = sections[index];
 let slideIndex = 0;
 let targets = section.querySelectorAll(".slide");
 
-section.querySelector('.nextButton').addEventListener("click", slideOneNext);
-section.querySelector('.prevButton').addEventListener("click", slideOnePrev);
-
 function handleCurrentIndexChange(updatedIndex) {
     slideIndex = 0;
 
@@ -22,9 +19,6 @@ function handleCurrentIndexChange(updatedIndex) {
     gsap.set(targets, {xPercent: 100});
 
     gsap.set(targets[0], {xPercent: 0});
-
-    section.querySelector('.nextButton').addEventListener("click", slideOneNext);
-    section.querySelector('.prevButton').addEventListener("click", slideOnePrev);
 }
 
 currentIndex.addEventListener(handleCurrentIndexChange);
@@ -33,7 +27,7 @@ gsap.set(targets, {xPercent: 100});
 
 gsap.set(targets[0], {xPercent: 0});
 
-function slideOneNext() {
+export function slideOneNext() {
     gsap.fromTo(targets[slideIndex], {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
 
     slideIndex = slideIndex < targets.length - 1 ? ++slideIndex : 0;
@@ -41,7 +35,7 @@ function slideOneNext() {
     gsap.fromTo(targets[slideIndex], {xPercent: 100, zIndex: 10}, {duration: 0.8, xPercent: 0, zIndex: 0});
 }
 
-function slideOnePrev() {
+export function slideOnePrev() {
     if (slideIndex === 0) return;
 
     gsap.fromTo(targets[slideIndex], {xPercent: 0, zIndex: 10}, {xPercent: 100, zIndex: 0});

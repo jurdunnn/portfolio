@@ -15,10 +15,6 @@
                     <h2 class="slide text-{{ $textColor }}">Slide</h2>
                     <h2 class="slide text-{{ $textColor }}">Slide</h2>
                 </div>
-                <div class="controls">
-                    <button class="prevButton">Prev</button>
-                    <button class="nextButton">Next</button>
-                </div>
             </div>
         </div>
     </div>
