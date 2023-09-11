@@ -1,6 +1,6 @@
 import './bootstrap';
 import {wheel, touchStart, touchMove, touchEnd} from './Modules/sections';
-import './Modules/info';
+import './Modules/slides';
 
 document.addEventListener("wheel", handleWheel);
 document.addEventListener("touchstart", handleTouchStart);
