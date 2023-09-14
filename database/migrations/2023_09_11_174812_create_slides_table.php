@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->unsignedMediumInteger('position');
-            $table->longText('inner_html')->nullable();
-            $table->string('outer_classes')->nullable();
-            $table->foreignId('project_id');
+            $table->string('component')->default('test');
+            $table->json('component_data')->nullable();
+            $table->foreignId('project_id')->constrained();
             $table->timestamps();
         });
     }

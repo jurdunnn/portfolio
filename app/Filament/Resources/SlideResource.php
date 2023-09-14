@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\ComponentType;
 use App\Filament\Resources\SlideResource\Pages;
 use App\Filament\Resources\SlideResource\RelationManagers;
 use App\Models\Slide;
@@ -26,13 +27,11 @@ class SlideResource extends Resource
                 Forms\Components\TextInput::make('position')
                     ->required()
                     ->numeric(),
-                Forms\Components\Textarea::make('inner_html')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('outer_classes')
-                    ->maxLength(255),
+                Forms\Components\Select::make('component')->options(ComponentType::toArray()),
                 Forms\Components\Select::make('project_id')
                     ->relationship('project', 'heading')
                     ->required(),
+                Forms\Components\KeyValue::make('component_data')->columnSpanFull(),
             ]);
     }
 
@@ -43,8 +42,6 @@ class SlideResource extends Resource
                 Tables\Columns\TextColumn::make('position')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('outer_classes')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('project.heading')
                     ->numeric()
                     ->sortable(),
