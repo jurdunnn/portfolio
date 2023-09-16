@@ -25,10 +25,11 @@ class SlideResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('project_id')
-                    ->relationship('project', 'id')
+                    ->relationship('project', 'heading')
                     ->required(),
                 Forms\Components\TextInput::make('position')
                     ->required()
+                    ->default(0)
                     ->numeric(),
                 Forms\Components\Select::make('component')->options(ComponentType::class),
                 Forms\Components\KeyValue::make('component_data'),

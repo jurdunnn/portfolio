@@ -11,9 +11,27 @@
             <div class="bg bg-{{ $bgColor }} one flex flex-col">
                 <div class="slides-container">
                     <h2 class="slide section-heading text-{{ $textColor }}">{{ $heading }}</h2>
-                    @foreach ($slides as $slide)
-                        <div class="slide text-{{ $textColor }}">
-                            <x-dynamic-component :component="$slide->component[0]->value" :data="$slide->component_data" />
+                    @foreach($slides as $slide)
+                        <div id="slide-{{ $loop->index }}" class="slide text-{{ $textColor }}">
+                            @switch($slide->component[0]->value)
+                                @case('text')
+                                    <div class="text-component">
+                                        <p>{{ $slide->component_data['text'] }}</p>
+                                    </div>
+                                @break
+
+                                @case('text-with-image')
+                                    <div class="text-with-image-component">
+                                        <p>{{ $slide->component_data['text'] }}</p>
+                                        <p>{{ $slide->component_data['image'] }}</p>
+                                    </div>
+                                @break
+
+                                @default
+                                    <div class="default-component">
+                                        <p>{{ $slide->component_data['text'] }}</p>
+                                    </div>
+                            @endswitch
                         </div>
                     @endforeach
                 </div>
