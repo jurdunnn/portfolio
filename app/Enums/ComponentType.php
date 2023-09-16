@@ -2,10 +2,15 @@
 
 namespace App\Enums;
 
-class ComponentType extends Enum
+use Filament\Support\Contracts\HasLabel;
+
+enum ComponentType: string implements HasLabel
 {
-    const COMPONENT_1 = 'component_1';
-    const COMPONENT_2 = 'component_2';
-    const COMPONENT_3 = 'component_3';
-    const COMPONENT_4 = 'component_4';
+    case Text = 'text';
+    case TextWithImage = 'text-with-image';
+
+    public function getLabel(): ?string
+    {
+        return $this->name;
+    }
 }

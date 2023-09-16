@@ -24,14 +24,14 @@ class SlideResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('project_id')
+                    ->relationship('project', 'id')
+                    ->required(),
                 Forms\Components\TextInput::make('position')
                     ->required()
                     ->numeric(),
-                Forms\Components\Select::make('component')->options(ComponentType::toArray()),
-                Forms\Components\Select::make('project_id')
-                    ->relationship('project', 'heading')
-                    ->required(),
-                Forms\Components\KeyValue::make('component_data')->columnSpanFull(),
+                Forms\Components\Select::make('component')->options(ComponentType::class),
+                Forms\Components\KeyValue::make('component_data'),
             ]);
     }
 
@@ -39,10 +39,10 @@ class SlideResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('position')
+                Tables\Columns\TextColumn::make('project.heading')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('project.heading')
+                Tables\Columns\TextColumn::make('position')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -64,9 +64,6 @@ class SlideResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ])
-            ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
             ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ComponentType;
+use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,8 +14,8 @@ class Slide extends Model
 
     protected $fillable = [
         'position',
-        'inner_html',
-        'outer_classes',
+        'component',
+        'component_data',
         'project_id'
     ];
 
@@ -25,7 +26,8 @@ class Slide extends Model
     ];
 
     protected $casts = [
-        'component' => ComponentType::class,
+        'component' => AsEnumCollection::class . ':' . ComponentType::class,
+        'component_data' => 'array'
     ];
 
     public function project(): BelongsTo
