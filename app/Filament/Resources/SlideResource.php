@@ -32,8 +32,7 @@ class SlideResource extends Resource
                     ->default(0)
                     ->numeric(),
                 Forms\Components\Select::make('component')->options(ComponentType::class)->columnSpanFull(),
-                Forms\Components\KeyValue::make('component_data')
-                    ->reorderable(),
+                Forms\Components\KeyValue::make('component_data'),
                 Forms\Components\Textarea::make('component_data.text')
                     ->rows(15),
             ]);
