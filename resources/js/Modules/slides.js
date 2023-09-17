@@ -28,6 +28,10 @@ gsap.set(targets, {xPercent: 100});
 gsap.set(targets[0], {xPercent: 0});
 
 export function slideOneNext() {
+    if (targets.length === 1) {
+        return;
+    }
+
     gsap.fromTo(targets[slideIndex], {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
 
     slideIndex = slideIndex < targets.length - 1 ? ++slideIndex : 0;
