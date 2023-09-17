@@ -10,7 +10,10 @@
         <div class="inner">
             <div class="bg bg-{{ $bgColor }} one flex flex-col">
                 <div class="slides-container">
-                    <h2 class="slide section-heading text-{{ $textColor }}">{{ $heading }}</h2>
+                    <div class="slide">
+                        <h2 class="section-heading max-w-2xl mx-auto text-{{ $textColor }}">{{ $heading }}</h2>
+                    </div>
+
                     @foreach($slides as $slide)
                         <div id="slide-{{ $loop->index }}" class="slide text-{{ $textColor }}">
                             @switch($slide->component[0]->value)
