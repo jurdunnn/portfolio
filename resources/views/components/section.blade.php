@@ -30,13 +30,30 @@
                                 @break
 
                                 @case('text-with-image')
-                                    <div class="text-with-image-component">
+                                    <div class="flex justify-between w-3/4 max-h-[60vh] gap-x-8">
+
                                         @isset($slide->component_data['text'])
-                                            <p>{!! $slide->component_data['text'] !!}</p>
+                                            <div class="flex flex-col justify-center w-2/3 px-8 pt-2 pb-6 mx-auto max-h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
+                                                @isset($slide->component_data['heading'])
+                                                    <h3 class="text-xl font-semibold">{{ $slide->component_data['heading'] }}</h3>
+                                                @endisset
+
+                                                @isset($slide->component_data['text'])
+                                                    <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
+                                                @endisset
+                                            </div>
                                         @endisset
 
                                         @isset($slide->component_data['image'])
-                                            <p>{{ $slide->component_data['image'] }}</p>
+                                            <div class="flex flex-col justify-center w-full mx-auto max-h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
+                                                <img
+                                                    src="{{ $slide->component_data['image'] }}"
+                                                    @isset($slide->component_data['image_alt'])
+                                                        alt=""
+                                                    @endisset
+                                                    class="object-cover w-full h-full rounded-xl"
+                                                >
+                                            </div>
                                         @endisset
                                     </div>
                                 @break
