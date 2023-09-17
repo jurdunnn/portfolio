@@ -24,7 +24,7 @@
                                         @endisset
 
                                         @isset($slide->component_data['text'])
-                                            <p class="text-left normal-case">{{ $slide->component_data['text'] }}</p>
+                                            <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
                                         @endisset
                                     </div>
                                 @break
@@ -32,7 +32,7 @@
                                 @case('text-with-image')
                                     <div class="text-with-image-component">
                                         @isset($slide->component_data['text'])
-                                            <p>{{ $slide->component_data['text'] }}</p>
+                                            <p>{!! $slide->component_data['text'] !!}</p>
                                         @endisset
 
                                         @isset($slide->component_data['image'])
@@ -44,7 +44,7 @@
                                 @default
                                     <div class="default-component">
                                         @isset($slide->component_data['text'])
-                                            <p>{{ $slide->component_data['text'] }}</p>
+                                            <p>{!! $slide->component_data['text'] !!}</p>
                                         @endisset
                                     </div>
                             @endswitch
