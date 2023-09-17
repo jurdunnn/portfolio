@@ -8,6 +8,7 @@ enum ComponentType: string implements HasLabel
 {
     case Text = 'text';
     case TextWithImage = 'text-with-image';
+    case ProblemSolutionValue = 'problem-solution-value';
 
     public function getLabel(): ?string
     {
