@@ -11,7 +11,7 @@
             <div class="bg bg-{{ $bgColor }} one flex flex-col">
                 <div class="slides-container">
                     <div class="slide">
-                        <h2 class="section-heading max-w-2xl mx-auto text-{{ $textColor }}">{{ $heading }}</h2>
+                        <h2 class="section-heading max-w-3xl mx-auto text-{{ $textColor }}">{{ $heading }}</h2>
                     </div>
 
                     @foreach($slides as $slide)
