@@ -35,7 +35,8 @@ function handleTouchMove(e) {
 }
 
 function handleClick(e) {
-    if (e.target.localName === "a") {
+    console.log(e.target);
+    if (e.target.localName === "a" || e.target.className.includes('no-slide')) {
         return;
     }
 
