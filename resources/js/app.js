@@ -1,6 +1,7 @@
 import './bootstrap';
 import {wheel, touchStart, touchMove, touchEnd} from './Modules/sections';
 import {slideOneNext, slideOnePrev} from './Modules/slides';
+import {currentIndex} from './currentIndex';
 
 let lastClickTime = 0;
 
@@ -35,7 +36,6 @@ function handleTouchMove(e) {
 }
 
 function handleClick(e) {
-    console.log(e.target);
     if (e.target.localName === "a" || e.target.className.includes('no-slide')) {
         return;
     }

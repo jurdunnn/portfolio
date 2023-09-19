@@ -36,6 +36,11 @@ h2 {
     width: 100vw;
 }
 
+.active {
+    background-color: white;
+    transform: scale(1.4);
+}
+
 header {
     position: fixed;
     display: flex;

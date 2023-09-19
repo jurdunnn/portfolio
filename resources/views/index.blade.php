@@ -14,6 +14,8 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+        <script src="//unpkg.com/alpinejs" defer></script>
+
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
 
