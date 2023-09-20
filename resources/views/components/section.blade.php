@@ -151,8 +151,8 @@
 
                     <div id="slide-nav" x-data="{ showInfo: false, info: '' }" class="h-[50px] ease-in-out duration-300 absolute bottom-0 left-1/2">
                         <div class="relative flex justify-center -translate-x-1/2 gap-x-6">
-                            <div x-show="showInfo" class="absolute -top-16 left-1/2 -translate-x-1/2 rounded-md bg-{{ $textColor }} text-{{ $bgColor }} text-sm w-full py-1 font-bold text-center align-middle px-2 border-1">
-                                <p x-text="info" class="m-auto"></p>
+                            <div x-show="showInfo" class="absolute -top-8 left-1/2 -translate-x-1/2 text-{{ $textColor }} text-xs w-full py-1 font-bold text-center align-middle px-2">
+                                <p x-text="info" class="m-auto letter-wide"></p>
                             </div>
 
                             @foreach ($slides as $slide)
