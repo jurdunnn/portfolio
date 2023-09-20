@@ -36,11 +36,11 @@ export function slideOneNext() {
         return;
     }
 
-    gsap.fromTo(targets[slideIndex], {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
+    inRight(targets[slideIndex]);
 
     slideIndex = slideIndex < targets.length - 1 ? ++slideIndex : 0;
 
-    gsap.fromTo(targets[slideIndex], {xPercent: 100, zIndex: 10}, {duration: 0.8, xPercent: 0, zIndex: 0});
+    outLeft(targets[slideIndex]);
 
     handleSlideNavChange();
 }
@@ -48,13 +48,52 @@ export function slideOneNext() {
 export function slideOnePrev() {
     if (slideIndex === 0) return;
 
-    gsap.fromTo(targets[slideIndex], {xPercent: 0, zIndex: 10}, {xPercent: 100, zIndex: 0});
+    outRight(targets[slideIndex]);
 
     slideIndex = slideIndex < targets.length ? --slideIndex : 0;
 
-    gsap.fromTo(targets[slideIndex], {xPercent: -100, zIndex: 0}, {delay: 0, duration: 0.8, xPercent: 0, zIndex: -10});
+    inLeft(targets[slideIndex]);
 
     handleSlideNavChange();
+}
+
+export function goToSlide(e) {
+    let newIndex = parseInt(e.target.dataset.slide) + 1;
+
+    // True for right, False for left.
+    let direction = newIndex > slideIndex ? true : false;
+
+    if (direction) {
+        inRight(targets[slideIndex]);
+    } else {
+        outRight(targets[slideIndex]);
+    }
+
+    slideIndex = newIndex;
+
+    if (direction) {
+        outLeft(targets[slideIndex]);
+    } else {
+        inLeft(targets[slideIndex]);
+    }
+
+    handleSlideNavChange();
+}
+
+function outRight(target) {
+    gsap.fromTo(target, {xPercent: 0, zIndex: 10}, {xPercent: 100, zIndex: 0});
+}
+
+function inRight(target) {
+    gsap.fromTo(target, {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
+}
+
+function outLeft(target) {
+    gsap.fromTo(target, {xPercent: 100, zIndex: 10}, {duration: 0.8, xPercent: 0, zIndex: 0});
+}
+
+function inLeft(target) {
+    gsap.fromTo(target, {xPercent: -100, zIndex: 0}, {delay: 0, duration: 0.8, xPercent: 0, zIndex: -10});
 }
 
 function handleSlideNavChange() {
@@ -64,6 +103,7 @@ function handleSlideNavChange() {
         gsap.fromTo(slideNav, {opacity: 0}, {delay: delay, opacity: 100});
 
         dots.forEach((dot) => dot.classList.remove('active'));
+
         dots[slideIndex - 1].classList.add('active');
     } else {
         gsap.fromTo(slideNav, {opacity: 100}, {delay: 0.05, duration: 0.4, opacity: 0});

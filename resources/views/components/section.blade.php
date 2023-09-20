@@ -136,7 +136,7 @@
                     <div id="slide-nav" class="h-[50px] ease-in-out duration-300 absolute bottom-0 left-1/2">
                         <div class="flex justify-center -translate-x-1/2 gap-x-6">
                             @foreach ($slides as $slide)
-                                <div id="slide-dot" class="w-4 h-4 bg-{{ $textColor }} rounded-full hover:scale-110 cursor-pointer"></div>
+                                <a id="slide-dot" data-slide="{{ $loop->index }}" class="w-4 h-4 bg-{{ $textColor }} rounded-full hover:scale-110 cursor-pointer"></a>
                             @endforeach
                         </div>
                     </div>

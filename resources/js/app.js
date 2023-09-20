@@ -1,6 +1,6 @@
 import './bootstrap';
 import {wheel, touchStart, touchMove, touchEnd} from './Modules/sections';
-import {slideOneNext, slideOnePrev} from './Modules/slides';
+import {slideOneNext, slideOnePrev, goToSlide} from './Modules/slides';
 import {currentIndex} from './currentIndex';
 
 let lastClickTime = 0;
@@ -36,6 +36,12 @@ function handleTouchMove(e) {
 }
 
 function handleClick(e) {
+    if (e.target.id.includes('slide-dot')) {
+        goToSlide(e);
+
+        return;
+    }
+
     if (e.target.localName === "a" || e.target.className.includes('no-slide')) {
         return;
     }
