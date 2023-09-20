@@ -60,6 +60,10 @@ export function slideOnePrev() {
 export function goToSlide(e) {
     let newIndex = parseInt(e.target.dataset.slide) + 1;
 
+    if (newIndex === slideIndex) {
+        return;
+    }
+
     // True for right, False for left.
     let direction = newIndex > slideIndex ? true : false;
 
