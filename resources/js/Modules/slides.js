@@ -91,7 +91,7 @@ function outRight(target) {
 }
 
 function inRight(target) {
-    gsap.fromTo(target, {xPercent: 0, zIndex: 0}, {delay: 0.2, duration: 0.8, xPercent: -100, zIndex: -10});
+    gsap.fromTo(target, {xPercent: 0, zIndex: 0}, {delay: 0.1, duration: 0.8, xPercent: -100, zIndex: -10});
 }
 
 function outLeft(target) {
