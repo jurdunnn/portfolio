@@ -21,6 +21,8 @@ function handleCurrentIndexChange(updatedIndex) {
     gsap.set(targets, {xPercent: 100});
 
     gsap.set(targets[0], {xPercent: 0});
+
+    handleSlideNavChange();
 }
 
 currentIndex.addEventListener(handleCurrentIndexChange);
