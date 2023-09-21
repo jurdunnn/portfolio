@@ -18,28 +18,32 @@
                         <div id="slide-{{ $loop->index }}" class="slide text-{{ $textColor }}">
                             @switch($slide->component[0]->value)
                                 @case('text')
-                                    <div class="flex flex-col justify-center w-3/4 px-8 pt-2 pb-6 mx-auto h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
-                                        @isset($slide->component_data['heading'])
-                                            <h3 class="text-xl font-semibold">{{ $slide->component_data['heading'] }}</h3>
-                                        @endisset
+                                    <div class="justify-center w-3/4 p-8 mx-auto h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
+                                        <div class="flex flex-col gap-y-6">
+                                            @isset($slide->component_data['heading'])
+                                                <h3 class="text-xl font-semibold">{{ $slide->component_data['heading'] }}</h3>
+                                            @endisset
 
-                                        @isset($slide->component_data['text'])
-                                            <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
-                                        @endisset
+                                            @isset($slide->component_data['text'])
+                                                <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
+                                            @endisset
+                                        </div>
                                     </div>
                                 @break
 
                                 @case('text-with-image')
                                     <div class="flex justify-between w-3/4 max-h-[60vh] gap-x-8">
                                         @isset($slide->component_data['text'])
-                                            <div class="flex flex-col justify-center w-2/3 px-8 pt-2 pb-6 mx-auto h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
-                                                @isset($slide->component_data['heading'])
-                                                    <h3 class="text-xl font-semibold">{{ $slide->component_data['heading'] }}</h3>
-                                                @endisset
+                                            <div class="justify-center w-2/3 p-8 mx-auto h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
+                                                <div class="flex flex-col gap-y-6">
+                                                    @isset($slide->component_data['heading'])
+                                                        <h3 class="text-xl font-semibold">{{ $slide->component_data['heading'] }}</h3>
+                                                    @endisset
 
-                                                @isset($slide->component_data['text'])
-                                                    <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
-                                                @endisset
+                                                    @isset($slide->component_data['text'])
+                                                        <p class="text-left normal-case">{!! $slide->component_data['text'] !!}</p>
+                                                    @endisset
+                                                </div>
                                             </div>
                                         @endisset
 
@@ -77,33 +81,39 @@
                                     <div class="flex flex-col w-3/4 gap-y-8 h-[60vh] justify-between">
                                         <div class="flex justify-between h-full gap-x-8">
                                             @isset($slide->component_data['problem'])
-                                                <div class="flex flex-col justify-center w-full px-8 pt-2 pb-6 mx-auto h-full overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
-                                                    <h3 class="text-xl font-semibold">Problem</h3>
+                                                <div class="justify-center w-full p-8 mx-auto h-full overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
+                                                    <div class="flex flex-col gap-y-6">
+                                                        <h3 class="text-xl font-semibold">Problem</h3>
 
-                                                    @isset($slide->component_data['problem'])
-                                                        <p class="text-left normal-case">{!! $slide->component_data['problem'] !!}</p>
-                                                    @endisset
+                                                        @isset($slide->component_data['problem'])
+                                                            <p class="text-left normal-case">{!! $slide->component_data['problem'] !!}</p>
+                                                        @endisset
+                                                    </div>
                                                 </div>
                                             @endisset
 
                                             @isset($slide->component_data['solution'])
-                                                <div class="flex flex-col justify-center w-full px-8 pt-2 pb-6 mx-auto h-full overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
-                                                    <h3 class="text-xl font-semibold">Solution</h3>
+                                                <div class="justify-center w-full p-8 mx-auto h-full overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
+                                                    <div class="flex flex-col gap-y-6">
+                                                        <h3 class="text-xl font-semibold">Solution</h3>
 
-                                                    @isset($slide->component_data['solution'])
-                                                        <p class="text-left normal-case">{!! $slide->component_data['solution'] !!}</p>
-                                                    @endisset
+                                                        @isset($slide->component_data['solution'])
+                                                            <p class="text-left normal-case">{!! $slide->component_data['solution'] !!}</p>
+                                                        @endisset
+                                                    </div>
                                                 </div>
                                             @endisset
                                         </div>
 
                                         @isset($slide->component_data['value'])
-                                            <div class="flex flex-col justify-center w-full px-8 pt-4 pb-2 mx-auto h-1/3 overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-3">
-                                                <h3 class="text-xl font-semibold">Value</h3>
+                                            <div class="justify-center w-full px-8 pt-4 pb-2 mx-auto h-1/3 overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
+                                                <div class="flex flex-col gap-y-3">
+                                                    <h3 class="text-xl font-semibold">Value</h3>
 
-                                                @isset($slide->component_data['value'])
-                                                    <p class="text-left normal-case">{!! $slide->component_data['value'] !!}</p>
-                                                @endisset
+                                                    @isset($slide->component_data['value'])
+                                                        <p class="text-left normal-case">{!! $slide->component_data['value'] !!}</p>
+                                                    @endisset
+                                                </div>
                                             </div>
                                         @endisset
                                     </div>
