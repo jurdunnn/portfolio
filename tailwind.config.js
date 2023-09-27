@@ -8,6 +8,9 @@ module.exports = {
     safelist: [
         {
             pattern: /bg-(primary|secondary)/
+        },
+        {
+            pattern: /text-(primary|secondary)/
         }
     ],
     theme: {
