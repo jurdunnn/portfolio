@@ -26,16 +26,6 @@ class ProjectResource extends Resource
                 Forms\Components\TextInput::make('heading')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('start_date')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('completion_date')
-                    ->required(),
-                Forms\Components\TextInput::make('website_link')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('github_link')
-                    ->required()
-                    ->maxLength(255),
             ]);
     }
 
@@ -44,10 +34,6 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('heading')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('website_link')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('github_link')
                     ->searchable(),
             ])
             ->filters([
