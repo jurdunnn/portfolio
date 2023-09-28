@@ -168,7 +168,7 @@
                                    x-on:mouseover="info = 'Project Heading'; showInfo = true"
                                    x-on:mouseleave="showInfo = false"
                                    data-slide="0"
-                                   class="bg-{{ $textColor }} dot ease-in-out duration-200 hover:scale-110 cursor-pointer"
+                                   class="w-4 h-4 rounded-full bg-{{ $textColor }} dot ease-in-out duration-200 hover:scale-110 cursor-pointer"
                                    ></a>
 
                                 @foreach ($slides as $slide)
@@ -178,7 +178,7 @@
                                            x-on:mouseleave="showInfo = false"
                                        @endisset
                                        data-slide="{{ $loop->index + 1 }}"
-                                       class="bg-{{ $textColor }} dot ease-in-out duration-200 hover:scale-110 cursor-pointer"
+                                       class="w-4 h-4 rounded-full bg-{{ $textColor }} dot ease-in-out duration-200 hover:scale-110 cursor-pointer"
                                    ></a>
                                @endforeach
                             </div>
