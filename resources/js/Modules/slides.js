@@ -3,11 +3,13 @@ import {currentIndex} from '../currentIndex';
 let index = currentIndex.getCurrentIndex();
 
 const sections = document.querySelectorAll('section');
-const slideNav = document.querySelector('#slide-nav');
-const dots = document.querySelectorAll('#slide-dot');
 let section = sections[index];
+let slideNav = section.querySelector('#slide-nav');
+let dots = slideNav.querySelectorAll('#slide-dot');
 let slideIndex = 0;
 let targets = section.querySelectorAll(".slide");
+
+dots[0].classList.add('active');
 
 function handleCurrentIndexChange(updatedIndex) {
     slideIndex = 0;
@@ -15,6 +17,14 @@ function handleCurrentIndexChange(updatedIndex) {
     index = updatedIndex;
 
     section = sections[index];
+
+    slideNav = section.querySelector('#slide-nav');
+
+    if (slideNav) {
+        dots = slideNav.querySelectorAll('#slide-dot');
+    } else {
+        dots = null;
+    }
 
     targets = section.querySelectorAll(".slide");
 
@@ -30,8 +40,6 @@ currentIndex.addEventListener(handleCurrentIndexChange);
 gsap.set(targets, {xPercent: 100});
 
 gsap.set(targets[0], {xPercent: 0});
-
-gsap.set(slideNav, {opacity: 0});
 
 export function slideOneNext() {
     if (targets.length === 1) {
@@ -60,7 +68,7 @@ export function slideOnePrev() {
 }
 
 export function goToSlide(e) {
-    let newIndex = parseInt(e.target.dataset.slide) + 1;
+    let newIndex = parseInt(e.target.dataset.slide);
 
     if (newIndex === slideIndex) {
         return;
@@ -103,15 +111,9 @@ function inLeft(target) {
 }
 
 function handleSlideNavChange() {
-    if (slideIndex > 0) {
-        var delay = slideIndex === 1 ? 0.6 : 0;
+    if (!dots) return;
 
-        gsap.fromTo(slideNav, {opacity: 0}, {delay: delay, opacity: 100});
+    dots.forEach((dot) => dot.classList.remove('active'));
 
-        dots.forEach((dot) => dot.classList.remove('active'));
-
-        dots[slideIndex - 1].classList.add('active');
-    } else {
-        gsap.fromTo(slideNav, {opacity: 100}, {delay: 0.05, duration: 0.4, opacity: 0});
-    }
+    dots[slideIndex].classList.add('active');
 }
