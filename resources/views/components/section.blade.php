@@ -120,7 +120,7 @@
                                 @break
 
                                 @case('links')
-                                    <div class="flex no-slide justify-between w-1/3 px-12 text-{{ $textColor }}">
+                                    <div class="flex no-slide mx-auto justify-between w-full sm:w-2/3 md:w-1/2 lg:w-1/3 px-12 text-{{ $textColor }}">
                                         <a
                                             @isset($slide->component_data['github'])
                                                 href="{{ $slide->component_data['github'] }}"
