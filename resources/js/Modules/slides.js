@@ -9,7 +9,7 @@ let dots = slideNav.querySelectorAll('#slide-dot');
 let slideIndex = 0;
 let targets = section.querySelectorAll(".slide");
 
-dots[0].classList.add('active');
+handleSlideNavChange();
 
 function handleCurrentIndexChange(updatedIndex) {
     slideIndex = 0;
