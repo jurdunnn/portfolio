@@ -4,6 +4,7 @@ let index = currentIndex.getCurrentIndex();
 
 const sections = document.querySelectorAll('section');
 let section = sections[index];
+const slideNavs = document.querySelectorAll('#slide-nav');
 let slideNav = section.querySelector('#slide-nav');
 let dots = slideNav.querySelectorAll('#slide-dot');
 let slideIndex = 0;
@@ -11,7 +12,15 @@ let targets = section.querySelectorAll(".slide");
 
 handleSlideNavChange();
 
+slideNavs[0].classList.remove('invisible');
+
 function handleCurrentIndexChange(updatedIndex) {
+    slideNavs.forEach((nav) => {
+        if (!nav.className.includes('invisible')) {
+            nav.classList.add('invisible');
+        }
+    });
+
     slideIndex = 0;
 
     index = updatedIndex;
@@ -21,6 +30,8 @@ function handleCurrentIndexChange(updatedIndex) {
     slideNav = section.querySelector('#slide-nav');
 
     if (slideNav) {
+        slideNav.classList.remove('invisible');
+
         dots = slideNav.querySelectorAll('#slide-dot');
     } else {
         dots = null;
