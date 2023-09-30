@@ -158,7 +158,7 @@
                             @endswitch
                         </div>
 
-                        <div id="slide-nav" x-data="{ showInfo: false, info: '' }" class="invisible h-[50px] ease-in-out duration-300 absolute bottom-0 left-1/2">
+                        <div id="slide-nav" x-data="{ showInfo: false, info: '' }" class="invisible h-[50px] z-10 ease-in-out duration-300 absolute bottom-0 left-1/2">
                             <div class="relative flex justify-center -translate-x-1/2 gap-x-6">
                                 <div x-show="showInfo" class="absolute -top-8 left-1/2 -translate-x-1/2 text-{{ $textColor }} text-xs w-full py-1 font-bold text-center align-middle px-2">
                                     <p x-text="info" class="m-auto letter-wide"></p>
