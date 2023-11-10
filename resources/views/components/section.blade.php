@@ -50,7 +50,7 @@
                                         @isset($slide->component_data['image'])
                                             <div class="flex flex-col justify-center w-full mx-auto h-[90vh] lg:h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
                                                 <img
-                                                    src="{{ $slide->component_data['image'] }}"
+                                                    src="{{ Storage::url($slide->component_data['image']) }}"
                                                     @isset($slide->component_data['image_alt'])
                                                         alt="{{ $slide->component_data['image_alt'] }}"
                                                     @endisset
@@ -66,7 +66,7 @@
                                         @isset($slide->component_data['image'])
                                             <div class="flex flex-col justify-center w-full mx-auto h-[60vh] overflow-hidden text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }} gap-y-6">
                                                 <img
-                                                    src="{{ $slide->component_data['image'] }}"
+                                                    src="{{ Storage::url($slide->component_data['image']) }}"
                                                     @isset($slide->component_data['image_alt'])
                                                         alt="{{ $slide->component_data['image_alt'] }}"
                                                     @endisset
