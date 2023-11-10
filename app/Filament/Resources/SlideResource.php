@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class SlideResource extends Resource
 {
@@ -32,6 +33,13 @@ class SlideResource extends Resource
                 Forms\Components\KeyValue::make('component_data'),
                 Forms\Components\Textarea::make('component_data.text')
                     ->rows(15),
+                Forms\Components\FileUpload::make('Upload an Image')
+                    ->disk('s3')
+                    ->directory('/')
+                    ->image()
+                    ->columnSpan('full')
+                    ->visibility('public')
+                    ->preserveFilenames()
             ]);
     }
 
