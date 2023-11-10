@@ -25,21 +25,36 @@ class SlideResource extends Resource
                 Forms\Components\Select::make('project_id')
                     ->relationship('project', 'heading')
                     ->required(),
+
                 Forms\Components\TextInput::make('position')
                     ->required()
                     ->default(0)
                     ->numeric(),
+
                 Forms\Components\Select::make('component')->options(ComponentType::class)->columnSpanFull(),
-                Forms\Components\KeyValue::make('component_data'),
+
+                Forms\Components\KeyValue::make('component_data')->columnSpanFull(),
+
                 Forms\Components\Textarea::make('component_data.text')
+                    ->columnSpanFull()
                     ->rows(15),
+
+                Forms\Components\Select::make('component_data.image')->options(
+                    collect(Storage::listContents('/')
+                        ->toArray())
+                        ->mapWithKeys(fn ($file) => [$file['path'] => $file['path']])
+                        ->all()
+                )->columnSpanFull(),
+
+
                 Forms\Components\FileUpload::make('Upload an Image')
                     ->disk('s3')
                     ->directory('/')
                     ->image()
                     ->columnSpan('full')
                     ->visibility('public')
-                    ->preserveFilenames()
+                    ->preserveFilenames(),
+
             ]);
     }
 
