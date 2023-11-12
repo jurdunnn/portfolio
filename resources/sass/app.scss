@@ -16,6 +16,11 @@ $bg-gradient: linear-gradient(
     user-select: none;
 }
 
+html {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
 body {
     margin: 0;
     padding: 0;
