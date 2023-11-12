@@ -26,6 +26,10 @@ gsap.set(innerWrappers, {yPercent: -100});
 function gotoSection(index, direction) {
     index = clamp(index);
 
+    if (index === sections.length - 1) {
+        index = 0;
+    }
+
     if (currentIndex.getCurrentIndex() === index) {
         return;
     }
