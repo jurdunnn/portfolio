@@ -36,6 +36,8 @@ function handleTouchStart(e) {
 }
 
 function handleTouchEnd(e) {
+    e.preventDefault();
+
     if (e.target.className.includes('no-scroll')) {
         return;
     }
