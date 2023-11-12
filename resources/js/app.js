@@ -20,18 +20,34 @@ document.addEventListener('click', function (e) {
 });
 
 function handleWheel(e) {
+    if (e.target.className.includes('no-scroll')) {
+        return;
+    }
+
     wheel(e);
 }
 
 function handleTouchStart(e) {
+    if (e.target.className.includes('no-scroll')) {
+        return;
+    }
+
     touchStart(e);
 }
 
 function handleTouchEnd(e) {
+    if (e.target.className.includes('no-scroll')) {
+        return;
+    }
+
     touchEnd(e);
 }
 
 function handleTouchMove(e) {
+    if (e.target.className.includes('no-scroll')) {
+        return;
+    }
+
     touchMove(e);
 }
 
