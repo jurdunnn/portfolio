@@ -21,11 +21,11 @@
                                     <div class="justify-center w-3/4 p-8 no-scroll mx-auto h-[60vh] overflow-scroll text-ellipsis text-normal xl:text-lg text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
                                         <div class="flex flex-col gap-y-6">
                                             @isset($slide->component_data['heading'])
-                                                <h3 class="font-semibold no-scroll text-normal lg:text-xl">{{ $slide->component_data['heading'] }}</h3>
+                                                <h3 class="font-semibold no-scroll text-normal">{{ $slide->component_data['heading'] }}</h3>
                                             @endisset
 
                                             @isset($slide->component_data['text'])
-                                                <p class="text-left normal-case no-scroll">{!! $slide->component_data['text'] !!}</p>
+                                                <p class="text-lg text-left normal-case md:text-xl no-scroll">{!! $slide->component_data['text'] !!}</p>
                                             @endisset
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                                     @endisset
 
                                                     @isset($slide->component_data['text'])
-                                                        <p class="text-left normal-case no-scroll">{!! $slide->component_data['text'] !!}</p>
+                                                        <p class="text-lg text-left normal-case md:text-xl no-scroll">{!! $slide->component_data['text'] !!}</p>
                                                     @endisset
                                                 </div>
                                             </div>
@@ -83,10 +83,10 @@
                                             @isset($slide->component_data['problem'])
                                                 <div class="justify-center w-full p-2 lg:p-8 mx-auto h-full overflow-scroll text-normal text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
                                                     <div class="flex flex-col no-scroll gap-y-3 lg:gap-y-6">
-                                                        <h3 class="text-lg font-semibold no-scroll lg:text-xl">Problem</h3>
+                                                        <h3 class="text-lg font-semibold no-scroll">Problem</h3>
 
                                                         @isset($slide->component_data['problem'])
-                                                            <p class="text-sm text-left normal-case no-scroll lg:text-normal">{!! $slide->component_data['problem'] !!}</p>
+                                                            <p class="text-lg text-left normal-case md:text-xl no-scroll lg:text-normal">{!! $slide->component_data['problem'] !!}</p>
                                                         @endisset
                                                     </div>
                                                 </div>
@@ -95,10 +95,10 @@
                                             @isset($slide->component_data['solution'])
                                                 <div class="justify-center w-full p-2 lg:p-8 mx-auto h-full overflow-scroll text-normal text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
                                                     <div class="flex flex-col gap-y-3 no-scroll lg:gap-y-6">
-                                                        <h3 class="text-lg font-semibold no-scroll lg:text-xl">Solution</h3>
+                                                        <h3 class="text-lg font-semibold no-scroll">Solution</h3>
 
                                                         @isset($slide->component_data['solution'])
-                                                            <p class="text-sm text-left normal-case no-scroll lg:text-normal">{!! $slide->component_data['solution'] !!}</p>
+                                                            <p class="text-lg text-left normal-case md:text-xl no-scroll lg:text-normal">{!! $slide->component_data['solution'] !!}</p>
                                                         @endisset
                                                     </div>
                                                 </div>
@@ -107,11 +107,11 @@
 
                                         @isset($slide->component_data['value'])
                                             <div class="justify-center hidden lg:block w-full px-8 pt-4 pb-2 mx-auto h-full overflow-scroll text-normal text-center border-0 shadow-xl rounded-xl bg-{{ $textColor }} text-{{ $bgColor }}">
-                                                <div class="flex no-scroll flex-col gap-y-3">
-                                                    <h3 class="text-lg no-scroll font-semibold lg:text-xl">Value</h3>
+                                                <div class="flex flex-col no-scroll gap-y-3">
+                                                    <h3 class="text-lg font-semibold no-scroll">Value</h3>
 
                                                     @isset($slide->component_data['value'])
-                                                        <p class="text-left no-scroll normal-case">{!! $slide->component_data['value'] !!}</p>
+                                                        <p class="text-lg text-left normal-case md:text-xl no-scroll">{!! $slide->component_data['value'] !!}</p>
                                                     @endisset
                                                 </div>
                                             </div>
@@ -168,7 +168,7 @@
                                    x-on:mouseover="info = 'Project Heading'; showInfo = true"
                                    x-on:mouseleave="showInfo = false"
                                    data-slide="0"
-                                   class="w-5 h-5 rounded-full bg-{{ $textColor }} ease-in-out duration-200 hover:scale-110 cursor-pointer"
+                                   class="w-6 h-6 md:w-4 md:h-4 rounded-full bg-{{ $textColor }} ease-in-out duration-200 hover:scale-110 cursor-pointer"
                                    ></a>
 
                                 @foreach ($slides as $slide)
@@ -178,7 +178,7 @@
                                            x-on:mouseleave="showInfo = false"
                                        @endisset
                                        data-slide="{{ $loop->index + 1 }}"
-                                       class="w-5 h-5 rounded-full bg-{{ $textColor }} ease-in-out duration-200 hover:scale-110 cursor-pointer"
+                                       class="w-6 h-6 md:w-4 md:h-4 rounded-full bg-{{ $textColor }} ease-in-out duration-200 hover:scale-110 cursor-pointer"
                                    ></a>
                                @endforeach
                             </div>
