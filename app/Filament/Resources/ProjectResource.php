@@ -25,7 +25,13 @@ class ProjectResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('heading')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('position')
+                    ->required()
+                    ->numeric()
+                    ->minValue(0)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -35,7 +41,9 @@ class ProjectResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('heading')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('position'),
             ])
+            ->defaultSort('position')
             ->filters([
                 //
             ])

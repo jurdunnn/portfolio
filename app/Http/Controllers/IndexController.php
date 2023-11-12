@@ -11,7 +11,7 @@ class IndexController extends Controller
     public function show(Request $request)
     {
         return view('index', [
-            'projects' => Project::with('slides')->get(),
+            'projects' => Project::with('slides')->get()->sortBy('position'),
         ]);
     }
 }
