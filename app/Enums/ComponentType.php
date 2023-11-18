@@ -11,6 +11,7 @@ enum ComponentType: string implements HasLabel
     case Image = 'image';
     case ProblemSolutionValue = 'problem-solution-value';
     case Links = 'links';
+    case WordCloud = 'word-cloud';
 
     public function getLabel(): ?string
     {
