@@ -7,7 +7,7 @@
     <ul class="flex flex-wrap justify-center max-w-xl cloud align-center gap-2 leading-8">
         @foreach(explode(',', $slide->component_data['words']) as $word)
             <li>
-                <a href="https://google.co.uk/search?q={{ trim($word) }}" target="_blank" class="hover:scale-110 hover:font-bold ease-in-out duration-150" data-weight="{{ $loop->index }}">{{ trim($word) }}</a>
+                <a href="https://google.co.uk/search?q=laravel {{ trim($word) }}" target="_blank" class="hover:scale-110 hover:font-bold ease-in-out duration-150" data-weight="{{ $loop->index }}">{{ trim($word) }}</a>
             </li>
         @endforeach
     </ul>
