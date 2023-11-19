@@ -41,6 +41,10 @@
                                     <x-word-cloud :slide="$slide" :textColor="$textColor" :bgColor="$bgColor" />
                                 @break
 
+                                @case('repo-stats')
+                                    <x-repo-stats :slide="$slide" :textColor="$textColor" :bgColor="$bgColor" />
+                                @break
+
                                 @default
                                     <div class="default-component">
                                         @isset($slide->component_data['text'])
