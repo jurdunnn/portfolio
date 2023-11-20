@@ -4,8 +4,8 @@
     <h1 class="w-1/2 text-4xl font-bold text-center md:w-1/3">{{ $slide->project->heading }}</h1>
 
     <p class="w-1/2 text-xl text-center normal-case md:w-1/4">
-        Feel free to have a look at the code or checkout the webiste. If you have any questions, please feel free to
-        reach out to me on Twitter or LinkedIn.
+        Thank you for taking an interest in {{ $slide->project->heading }}! Feel free to have a look at the code or checkout the webiste.
+        If you have any questions, please feel free to reach out to me on LinkedIn.
     </p>
 
     <div class="flex no-slide mx-auto text-center mt-8 font-bold text-xs sm:text-sm lg:text-base  gap-x-12 w-full sm:w-2/3 md:w-1/2 px-12 text-{{ $textColor }}">
