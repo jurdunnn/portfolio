@@ -29,10 +29,6 @@ let tutorialTimeline = gsap.timeline({
 function showTutorial() {
     notification.classList.remove('hidden');
 
-    if (currentTutorial == 2) {
-        sessionStorage.setItem('showTutorial', false);
-    }
-
     if (sessionStorage.getItem('showTutorial') === 'false') {
         return;
     }
@@ -45,11 +41,15 @@ function showTutorial() {
         notificationText.innerHTML = tutorials[currentTutorial];
 
         tutorialTimeline.fromTo(notification, {yPercent: -500}, {yPercent: 20})
+
+        if (currentTutorial == 2) {
+            sessionStorage.setItem('showTutorial', false);
+        }
     }, 2000);
 }
 
 function advanceTutorial() {
-    if (sessionStorage.getItem('showTutorial') === 'false') {
+    if (sessionStorage.getItem('showTutorial') === 'false' && currentTutorial !== 2) {
         return;
     }
 
