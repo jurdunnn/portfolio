@@ -20,9 +20,12 @@
     </head>
 
     <body class="antialiased scroll-smooth">
-        <header>
+        <header class="relative">
             <a href="https://github.com/jurdunnn" target="_blank">Jordan Downs</a>
+
             <a href="https://www.linkedin.com/in/jordan-downs-5a546a104/" target="_blank">Junior PHP Developer</a>
+
+            <x-notification />
         </header>
 
         @foreach ($projects as $project)

@@ -1,6 +1,7 @@
 import './bootstrap';
 import {wheel, touchStart, touchMove, touchEnd} from './Modules/sections';
 import {slideOneNext, slideOnePrev, goToSlide} from './Modules/slides';
+import {advanceTutorial, currentTutorial, showTutorial} from './tutorials';
 import {currentIndex} from './currentIndex';
 
 let lastClickTime = 0;
@@ -19,9 +20,15 @@ document.addEventListener('click', function (e) {
     }
 });
 
+showTutorial();
+
 function handleWheel(e) {
     if (e.target.className.includes('no-scroll')) {
         return;
+    }
+
+    if (currentTutorial === 1 || currentTutorial === 2) {
+        advanceTutorial();
     }
 
     wheel(e);
@@ -38,6 +45,10 @@ function handleTouchStart(e) {
 function handleTouchEnd(e) {
     if (e.target.className.includes('no-scroll')) {
         return;
+    }
+
+    if (currentTutorial === 1 || currentTutorial === 2) {
+        advanceTutorial();
     }
 
     touchEnd(e);
@@ -65,6 +76,10 @@ function handleClick(e) {
     if (e.shiftKey) {
         slideOnePrev();
     } else {
+        if (currentTutorial === 0) {
+            advanceTutorial();
+        }
+
         slideOneNext();
     }
 }
