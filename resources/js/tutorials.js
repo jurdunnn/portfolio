@@ -24,20 +24,16 @@ const tutorials = {
 }
 
 let currentTutorial = 0;
+let animating = false;
 
 gsap.set(notification, {yPercent: -500});
 
 let tutorialTimeline = gsap.timeline({
     defaults: {duration: .5, ease: "power1.inOut"},
+    onComplete: () => (animating = false)
 });
 
 function showTutorial() {
-    if (Object.keys(tutorials).every(key => tutorials[key].completed === true)) {
-        sessionStorage.setItem('showTutorial', false);
-
-        return;
-    }
-
     if (getActiveTutorial() === null) {
         return;
     }
@@ -48,23 +44,49 @@ function showTutorial() {
         return;
     }
 
-    setTimeout(() => {
-        notificationText.innerHTML = isMobile ? getActiveTutorial().mobile : getActiveTutorial().desktop;
-
-        tutorialTimeline.fromTo(notification, {yPercent: -500}, {yPercent: 20})
-    }, 2000);
+    setTextAndAnimateIn();
 }
 
-function advanceTutorial() {
+function advanceTutorial(e) {
+    if (animating) {
+        return;
+    }
+
+    if (Object.keys(tutorials).every(key => tutorials[key].completed === true)) {
+        sessionStorage.setItem('showTutorial', false);
+
+        return;
+    }
+
     if (getActiveTutorial() === null || sessionStorage.getItem('showTutorial') === 'false') {
         return;
     }
 
+    if (!getActiveTutorial().completedByEvents.includes(e.type)) {
+        return;
+    }
+
+    animateOutAndMarkAsCompleted();
+
+    showTutorial();
+}
+
+function animateOutAndMarkAsCompleted() {
+    animating = true;
+
     tutorialTimeline.fromTo(notification, {yPercent: 20}, {yPercent: -500});
 
     getActiveTutorial().completed = true;
+}
 
-    showTutorial();
+function setTextAndAnimateIn() {
+    animating = true;
+
+    setTimeout(() => {
+        notificationText.innerHTML = isMobile ? getActiveTutorial().mobile : getActiveTutorial().desktop;
+
+        tutorialTimeline.fromTo(notification, {yPercent: -500}, {yPercent: 20});
+    }, 2000);
 }
 
 function getActiveTutorial() {
