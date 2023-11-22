@@ -23,52 +23,56 @@ const tutorials = {
     },
 }
 
-let currentTutorial = 0;
 let animating = false;
 
 gsap.set(notification, {yPercent: -500});
 
-let tutorialTimeline = gsap.timeline({
-    defaults: {duration: .5, ease: "power1.inOut"},
-    onComplete: () => (animating = false)
+const tutorialTimeline = gsap.timeline({
+    defaults: {duration: 0.4, ease: "power1.inOut"},
+    onComplete: () => (animating = false),
 });
 
 function showTutorial() {
-    if (getActiveTutorial() === null) {
+    const activeTutorial = getActiveTutorial();
+
+    if (activeTutorial === null) {
         return;
     }
 
-    notification.classList.remove('hidden');
+    notification.classList.remove("hidden");
 
-    if (sessionStorage.getItem('showTutorial') === 'false') {
+    if (sessionStorage.getItem("showTutorial") === "false") {
         return;
     }
 
     setTextAndAnimateIn();
 }
 
-function advanceTutorial(e) {
-    if (animating) {
+function advanceTutorial(event) {
+    const allTutorialsCompleted = Object.values(tutorials).every(
+        (tutorial) => tutorial.completed === true
+    );
+
+    if (allTutorialsCompleted) {
+        sessionStorage.setItem("showTutorial", false);
         return;
     }
 
-    if (Object.keys(tutorials).every(key => tutorials[key].completed === true)) {
-        sessionStorage.setItem('showTutorial', false);
+    const activeTutorial = getActiveTutorial();
 
+    if (activeTutorial === null || sessionStorage.getItem("showTutorial") === "false") {
         return;
     }
 
-    if (getActiveTutorial() === null || sessionStorage.getItem('showTutorial') === 'false') {
+    if (!activeTutorial.completedByEvents.includes(event.type)) {
         return;
     }
 
-    if (!getActiveTutorial().completedByEvents.includes(e.type)) {
-        return;
+    if (!animating) {
+        animateOutAndMarkAsCompleted();
+
+        showTutorial();
     }
-
-    animateOutAndMarkAsCompleted();
-
-    showTutorial();
 }
 
 function animateOutAndMarkAsCompleted() {
@@ -83,20 +87,26 @@ function setTextAndAnimateIn() {
     animating = true;
 
     setTimeout(() => {
-        notificationText.innerHTML = isMobile ? getActiveTutorial().mobile : getActiveTutorial().desktop;
+        const activeTutorial = getActiveTutorial();
+
+        const tutorialText = isMobile ? activeTutorial.mobile : activeTutorial.desktop;
+
+        notificationText.innerHTML = tutorialText;
 
         tutorialTimeline.fromTo(notification, {yPercent: -500}, {yPercent: 20});
     }, 2000);
 }
 
 function getActiveTutorial() {
-    let key = Object.keys(tutorials).find(key => tutorials[key].completed === false);
+    const activeTutorialKey = Object.keys(tutorials).find(
+        (key) => tutorials[key].completed === false
+    );
 
-    if (!key) {
+    if (!activeTutorialKey) {
         return null;
     }
 
-    return tutorials[key];
+    return tutorials[activeTutorialKey];
 }
 
-export {advanceTutorial, currentTutorial, showTutorial};
+export {advanceTutorial, showTutorial};

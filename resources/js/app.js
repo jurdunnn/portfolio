@@ -1,7 +1,7 @@
 import './bootstrap';
 import {wheel, touchStart, touchMove, touchEnd} from './Modules/sections';
 import {slideOneNext, slideOnePrev, goToSlide} from './Modules/slides';
-import {advanceTutorial, currentTutorial, showTutorial} from './tutorials';
+import {advanceTutorial, showTutorial} from './tutorials';
 import {currentIndex} from './currentIndex';
 
 let lastClickTime = 0;
