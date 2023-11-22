@@ -27,9 +27,7 @@ function handleWheel(e) {
         return;
     }
 
-    if (currentTutorial === 1 || currentTutorial === 2) {
-        advanceTutorial();
-    }
+    advanceTutorial();
 
     wheel(e);
 }
@@ -47,9 +45,7 @@ function handleTouchEnd(e) {
         return;
     }
 
-    if (currentTutorial === 1 || currentTutorial === 2) {
-        advanceTutorial();
-    }
+    advanceTutorial();
 
     touchEnd(e);
 }
@@ -76,9 +72,7 @@ function handleClick(e) {
     if (e.shiftKey) {
         slideOnePrev();
     } else {
-        if (currentTutorial === 0) {
-            advanceTutorial();
-        }
+        advanceTutorial();
 
         slideOneNext();
     }
