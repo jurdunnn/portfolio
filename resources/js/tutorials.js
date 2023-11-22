@@ -48,7 +48,17 @@ function showTutorial() {
     setTextAndAnimateIn();
 }
 
+let lastAdvanceTime = 0;
+
 function advanceTutorial(event) {
+    const currentTime = Date.now();
+
+    if (currentTime - lastAdvanceTime > 2500) {
+        lastAdvanceTime = currentTime;
+    } else {
+        return;
+    }
+
     const allTutorialsCompleted = Object.values(tutorials).every(
         (tutorial) => tutorial.completed === true
     );
