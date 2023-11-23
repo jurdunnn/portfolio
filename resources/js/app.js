@@ -13,7 +13,7 @@ document.addEventListener("touchend", handleTouchEnd);
 document.addEventListener('click', function (e) {
     const currentTime = Date.now();
 
-    if (currentTime - lastClickTime > 500) {
+    if (currentTime - lastClickTime > 350) {
         lastClickTime = currentTime;
 
         handleClick(e);
