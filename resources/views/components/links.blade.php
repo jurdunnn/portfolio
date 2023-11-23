@@ -8,7 +8,7 @@
         If you have any questions, please feel free to reach out to me on <a href="https://www.linkedin.com/in/jordan-downs-5a546a104/" class="underline no-slide" target="_blank">LinkedIn</a>.
     </p>
 
-    <div class="flex flex-col lg:flex-row gap-y-3 no-slide mx-auto text-center mt-8 font-bold text-xs sm:text-sm lg:text-base  gap-x-12 w-full w-2/3 md:w-1/2 px-6 lg:px-12 text-{{ $textColor }}">
+    <div class="flex flex-col lg:flex-row gap-y-3 no-slide mx-auto text-center mt-8 lg:mt-24 font-bold text-xs sm:text-sm lg:text-base  gap-x-12 w-full w-2/3 md:w-1/2 px-6 lg:px-12 text-{{ $textColor }}">
         <a
             @isset($slide->component_data['github'])
                 href="{{ $slide->component_data['github'] }}"
