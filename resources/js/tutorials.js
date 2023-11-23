@@ -28,7 +28,7 @@ let animating = false;
 gsap.set(notification, {yPercent: -500});
 
 const tutorialTimeline = gsap.timeline({
-    defaults: {duration: 0.4, ease: "power1.inOut"},
+    defaults: {duration: 0.25, ease: "power1.inOut"},
     onComplete: () => (animating = false),
 });
 
