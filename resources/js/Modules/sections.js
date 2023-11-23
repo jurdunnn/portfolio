@@ -40,7 +40,7 @@ function gotoSection(index, direction) {
         dFactor = fromTop ? -1 : 1,
         hasPrimaryText = headings[index].className.includes('text-primary'),
         tl = gsap.timeline({
-            defaults: {duration: .2, ease: "power1.inOut"},
+            defaults: {duration: .35, ease: "power1.inOut"},
             onComplete: () => (animating = false)
         });
 
@@ -68,7 +68,7 @@ function gotoSection(index, direction) {
             {
                 autoAlpha: 1,
                 yPercent: 0,
-                duration: 0.2,
+                duration: 0.35,
                 ease: "power2",
                 stagger: {
                     each: 0.02,
