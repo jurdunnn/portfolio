@@ -4,7 +4,7 @@
 </style>
 
 <div class="text-center">
-    <ul class="flex flex-wrap justify-center max-w-xl cloud align-center gap-2 leading-8">
+    <ul class="flex flex-wrap justify-center max-w-md lg:max-w-xl cloud align-center gap-2 leading-8">
         @foreach(explode(',', $slide->component_data['words']) as $word)
             <li>
                 <a href="https://google.co.uk/search?q=laravel {{ trim($word) }}" target="_blank" class="mx-4 my-2 hover:scale-110 hover:font-bold ease-in-out duration-150" data-weight="{{ $loop->index }}">{{ trim($word) }}</a>
@@ -17,7 +17,7 @@
     const tags = document.querySelectorAll('ul.cloud a');
 
     tags.forEach((tag, index) => {
-        const size = Math.floor(Math.random() * 80) + 20;
+        const size = Math.floor(Math.random() * 55) + 20;
 
         const hue = Math.floor(Math.random() * 360);
 
