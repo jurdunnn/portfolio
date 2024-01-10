@@ -6,7 +6,13 @@ const sections = document.querySelectorAll('section');
 let section = sections[index];
 const slideNavs = document.querySelectorAll('#slide-nav');
 let slideNav = section.querySelector('#slide-nav');
-let dots = slideNav.querySelectorAll('#slide-dot');
+
+let dots = null;
+
+if (slideNav) {
+    dots = slideNav.querySelectorAll('#slide-dot');
+}
+
 let slideIndex = 0;
 let targets = section.querySelectorAll(".slide");
 
