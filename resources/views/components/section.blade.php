@@ -8,6 +8,7 @@
 <section>
     <div class="outer relative">
         <x-notification />
+
         <div class="inner">
             <div class="bg bg-{{ $bgColor }} one flex flex-col">
                 <div class="relative slides-container">

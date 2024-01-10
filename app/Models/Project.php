@@ -15,13 +15,16 @@ class Project extends Model
         'start_date',
         'position',
         'completion_date',
-        'website_link',
-        'github_link',
+        'is_intro',
+        'intro_text',
+        'cv_file',
+        'message_text',
     ];
 
     protected $casts = [
         'start_date' => 'date',
         'completion_date' => 'date',
+        'is_intro' => 'boolean',
     ];
 
     protected $hidden = [
